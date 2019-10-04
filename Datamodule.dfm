@@ -1,5 +1,6 @@
 object DModule: TDModule
   OldCreateOrder = False
+  OnCreate = DataModuleCreate
   Height = 644
   Width = 939
   object FDConnectionAccess: TFDConnection
@@ -23,6 +24,12 @@ object DModule: TDModule
     Top = 272
   end
   object FDConnectionLocal: TFDConnection
+    Params.Strings = (
+      
+        'Database=D:\Projects2019\SmartCity\MigrationToolApp\SQLite\db.sq' +
+        'lite3'
+      'DriverID=SQLite')
+    LoginPrompt = False
     Left = 104
     Top = 96
   end
