@@ -62,7 +62,6 @@ type
     FDTableAccessusername: TWideMemoField;
     FDTableAccesspassword: TWideMemoField;
     FDTableAccessdatabase: TWideMemoField;
-    cxTextEditAccessConnName: TcxTextEdit;
     cxButtonSaveAccessConn: TcxButton;
     TabSheetRest: TTabSheet;
     Panel3: TPanel;
@@ -84,6 +83,10 @@ type
     cxSplitter1: TcxSplitter;
     cxButtonAddNewConn: TcxButton;
     cxTextEditRestfulConnName: TcxTextEdit;
+    Panel6: TPanel;
+    cxTextEditAccessConnName: TcxTextEdit;
+    cxTextEditTableName: TcxTextEdit;
+    cxSplitter2: TcxSplitter;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure cxButton1Click(Sender: TObject);
     procedure ActionNewConnExecute(Sender: TObject);
@@ -122,12 +125,28 @@ begin
   password := cxTextEditAccPass.Text;
   connName := cxTextEditAccessConnName.Text;
 
+  if self.cxTextEditAccessConnName.Text = '' then begin
+    ShowMessage('Set connection name');
+    exit;
+  end;
+
+  if self.FAccessDBFile.IsEmpty then begin
+    ShowMessage('Choose database file');
+    exit;
+  end;
+
+  if cxTextEditTableName.Text = '' then begin
+    ShowMessage('Set table name of database');
+    exit;
+  end;
+
   with FDTableAccess do begin
     Active := True;
     Insert;
     FieldByName('username').AsString := username;
     FieldByName('password').AsString := password;
     FieldByName('database').AsString := self.FAccessDBFile;
+    FieldByName('tablename').AsString := cxTextEditTableName.Text;
     Post;
   end;
 
@@ -159,8 +178,8 @@ begin
   PanelConnList.Visible := True;
   PageControl.Visible := False;
 
-  FDQueryConnections.Active:=False;
-  FDQueryConnections.Active:=True;
+  FDQueryConnections.Active := False;
+  FDQueryConnections.Active := True;
 
 end;
 
@@ -219,8 +238,8 @@ begin
   PanelConnList.Visible := True;
   PageControl.Visible := False;
 
-  FDQueryConnections.Active:=False;
-  FDQueryConnections.Active:=True;
+  FDQueryConnections.Active := False;
+  FDQueryConnections.Active := True;
 end;
 
 // ActionSaveRestfulURL
@@ -259,8 +278,8 @@ begin
 
   PanelConnList.Visible := True;
   PageControl.Visible := False;
-  FDQueryConnections.Active:=False;
-  FDQueryConnections.Active:=True;
+  FDQueryConnections.Active := False;
+  FDQueryConnections.Active := True;
 end;
 
 procedure TFormConfiguration.cxButton1Click(Sender: TObject);

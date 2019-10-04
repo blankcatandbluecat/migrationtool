@@ -17,6 +17,94 @@ object FormConfiguration: TFormConfiguration
   OnClose = FormClose
   PixelsPerInch = 96
   TextHeight = 13
+  object PanelConnList: TPanel
+    AlignWithMargins = True
+    Left = 50
+    Top = 50
+    Width = 945
+    Height = 613
+    Margins.Left = 50
+    Margins.Top = 50
+    Margins.Right = 50
+    Margins.Bottom = 50
+    Align = alClient
+    TabOrder = 1
+    ExplicitTop = 277
+    ExplicitWidth = 755
+    ExplicitHeight = 210
+    object cxGridConnections: TcxGrid
+      Left = 1
+      Top = 1
+      Width = 943
+      Height = 611
+      Align = alClient
+      TabOrder = 0
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitHeight = 607
+      object cxGridConnectionsDBTableView1: TcxGridDBTableView
+        Navigator.Buttons.CustomButtons = <>
+        DataController.DataSource = dsConnections
+        DataController.Summary.DefaultGroupSummaryItems = <>
+        DataController.Summary.FooterSummaryItems = <>
+        DataController.Summary.SummaryGroups = <>
+        OptionsView.ColumnAutoWidth = True
+        object cxGridConnectionsDBTableView1id: TcxGridDBColumn
+          Caption = 'ID'
+          DataBinding.FieldName = 'id'
+          Width = 48
+        end
+        object cxGridConnectionsDBTableView1conn_name: TcxGridDBColumn
+          Caption = 'Connection name'
+          DataBinding.FieldName = 'conn_name'
+          Width = 352
+        end
+        object cxGridConnectionsDBTableView1connection_type: TcxGridDBColumn
+          Caption = 'Connection type'
+          DataBinding.FieldName = 'connection_type'
+          Width = 351
+        end
+      end
+      object cxGridConnectionsLevel1: TcxGridLevel
+        GridView = cxGridConnectionsDBTableView1
+      end
+    end
+  end
+  object cxButtonAddNewConn: TcxButton
+    Left = 50
+    Top = 7
+    Width = 185
+    Height = 37
+    Action = ActionNewConn
+    OptionsImage.Glyph.SourceDPI = 96
+    OptionsImage.Glyph.Data = {
+      3C3F786D6C2076657273696F6E3D22312E302220656E636F64696E673D225554
+      462D38223F3E0D0A3C7376672076657273696F6E3D22312E31222069643D2241
+      64645F446174615F536F757263652220786D6C6E733D22687474703A2F2F7777
+      772E77332E6F72672F323030302F7376672220786D6C6E733A786C696E6B3D22
+      687474703A2F2F7777772E77332E6F72672F313939392F786C696E6B2220783D
+      223070782220793D22307078222076696577426F783D22302030203332203332
+      22207374796C653D22656E61626C652D6261636B67726F756E643A6E65772030
+      20302033322033323B2220786D6C3A73706163653D227072657365727665223E
+      262331333B262331303B093C7374796C6520747970653D22746578742F637373
+      2220786D6C3A73706163653D227072657365727665223E2E477265656E7B6669
+      6C6C3A233033394332333B7D262331333B262331303B2623393B2E59656C6C6F
+      777B66696C6C3A234646423131353B7D3C2F7374796C653E0D0A093C70617468
+      20636C6173733D2259656C6C6F772220643D224D342C3130563663302D322E32
+      2C342E352D342C31302D347331302C312E382C31302C34763463302C322E322D
+      342E352C342D31302C3453342C31322E322C342C31307A204D31342C32306332
+      2E332C302C342E332D302E332C362D302E385631366834762D3420202623393B
+      63302C322E322D342E352C342D31302C3453342C31342E322C342C3132763443
+      342C31382E322C382E352C32302C31342C32307A204D31362C32312E39433135
+      2E342C32322C31342E372C32322C31342C3232632D352E352C302D31302D312E
+      382D31302D34763463302C322E322C342E352C342C31302C3420202623393B63
+      302E372C302C312E342C302C322D302E315632312E397A222F3E0D0A093C706F
+      6C79676F6E20636C6173733D22477265656E2220706F696E74733D2233302C32
+      322032362C32322032362C31382032322C31382032322C32322031382C323220
+      31382C32362032322C32362032322C33302032362C33302032362C3236203330
+      2C323620222F3E0D0A3C2F7376673E0D0A}
+    TabOrder = 2
+  end
   object PageControl: TPageControl
     AlignWithMargins = True
     Left = 50
@@ -27,7 +115,7 @@ object FormConfiguration: TFormConfiguration
     Margins.Top = 50
     Margins.Right = 50
     Margins.Bottom = 50
-    ActivePage = TabSheetMySQL
+    ActivePage = TabSheetMSAccess
     Align = alClient
     TabOrder = 0
     Visible = False
@@ -245,25 +333,10 @@ object FormConfiguration: TFormConfiguration
             ExplicitWidth = 493
           end
         end
-        object cxTextEditAccessConnName: TcxTextEdit
-          AlignWithMargins = True
-          Left = 6
-          Top = 61
-          Margins.Left = 5
-          Margins.Top = 20
-          Margins.Right = 5
-          Align = alTop
-          AutoSize = False
-          TabOrder = 1
-          TextHint = 'Connection name'
-          ExplicitTop = 60
-          Height = 40
-          Width = 625
-        end
         object cxButton3: TcxButton
           AlignWithMargins = True
           Left = 6
-          Top = 154
+          Top = 138
           Width = 625
           Height = 49
           Margins.Left = 5
@@ -278,7 +351,7 @@ object FormConfiguration: TFormConfiguration
             8FD24BF920A74E66F668BB0B803A2F36A22EC0CF9BE73CC0DB0E001189C40A58
             C14701000024150700B838FF021C71290000007400407B80E2888CD6B7CBABBE
             66001ABBA7C010E7C5D9FA0000000049454E44AE426082}
-          TabOrder = 2
+          TabOrder = 1
           ExplicitLeft = 4
           ExplicitTop = 88
           ExplicitWidth = 629
@@ -286,13 +359,13 @@ object FormConfiguration: TFormConfiguration
         object Panel5: TPanel
           AlignWithMargins = True
           Left = 6
-          Top = 107
+          Top = 91
           Width = 625
           Height = 41
           Margins.Left = 5
           Margins.Right = 5
           Align = alTop
-          TabOrder = 3
+          TabOrder = 2
           ExplicitLeft = 32
           ExplicitTop = 48
           ExplicitWidth = 185
@@ -323,6 +396,42 @@ object FormConfiguration: TFormConfiguration
             ExplicitLeft = 288
             ExplicitTop = 16
             ExplicitHeight = 100
+          end
+        end
+        object Panel6: TPanel
+          AlignWithMargins = True
+          Left = 6
+          Top = 44
+          Width = 625
+          Height = 41
+          Margins.Left = 5
+          Margins.Right = 5
+          Align = alTop
+          TabOrder = 3
+          ExplicitLeft = 32
+          ExplicitTop = 48
+          ExplicitWidth = 185
+          object cxTextEditAccessConnName: TcxTextEdit
+            Left = 1
+            Top = 1
+            Align = alLeft
+            TabOrder = 0
+            TextHint = 'Connection name'
+            Width = 288
+          end
+          object cxTextEditTableName: TcxTextEdit
+            Left = 297
+            Top = 1
+            Align = alClient
+            TabOrder = 1
+            TextHint = 'Table name'
+            Width = 327
+          end
+          object cxSplitter2: TcxSplitter
+            Left = 289
+            Top = 1
+            Width = 8
+            Height = 39
           end
         end
       end
@@ -416,94 +525,6 @@ object FormConfiguration: TFormConfiguration
         end
       end
     end
-  end
-  object PanelConnList: TPanel
-    AlignWithMargins = True
-    Left = 50
-    Top = 50
-    Width = 945
-    Height = 613
-    Margins.Left = 50
-    Margins.Top = 50
-    Margins.Right = 50
-    Margins.Bottom = 50
-    Align = alClient
-    TabOrder = 1
-    ExplicitTop = 277
-    ExplicitWidth = 755
-    ExplicitHeight = 210
-    object cxGridConnections: TcxGrid
-      Left = 1
-      Top = 1
-      Width = 943
-      Height = 611
-      Align = alClient
-      TabOrder = 0
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitHeight = 607
-      object cxGridConnectionsDBTableView1: TcxGridDBTableView
-        Navigator.Buttons.CustomButtons = <>
-        DataController.DataSource = dsConnections
-        DataController.Summary.DefaultGroupSummaryItems = <>
-        DataController.Summary.FooterSummaryItems = <>
-        DataController.Summary.SummaryGroups = <>
-        OptionsView.ColumnAutoWidth = True
-        object cxGridConnectionsDBTableView1id: TcxGridDBColumn
-          Caption = 'ID'
-          DataBinding.FieldName = 'id'
-          Width = 48
-        end
-        object cxGridConnectionsDBTableView1conn_name: TcxGridDBColumn
-          Caption = 'Connection name'
-          DataBinding.FieldName = 'conn_name'
-          Width = 352
-        end
-        object cxGridConnectionsDBTableView1connection_type: TcxGridDBColumn
-          Caption = 'Connection type'
-          DataBinding.FieldName = 'connection_type'
-          Width = 351
-        end
-      end
-      object cxGridConnectionsLevel1: TcxGridLevel
-        GridView = cxGridConnectionsDBTableView1
-      end
-    end
-  end
-  object cxButtonAddNewConn: TcxButton
-    Left = 50
-    Top = 7
-    Width = 185
-    Height = 37
-    Action = ActionNewConn
-    OptionsImage.Glyph.SourceDPI = 96
-    OptionsImage.Glyph.Data = {
-      3C3F786D6C2076657273696F6E3D22312E302220656E636F64696E673D225554
-      462D38223F3E0D0A3C7376672076657273696F6E3D22312E31222069643D2241
-      64645F446174615F536F757263652220786D6C6E733D22687474703A2F2F7777
-      772E77332E6F72672F323030302F7376672220786D6C6E733A786C696E6B3D22
-      687474703A2F2F7777772E77332E6F72672F313939392F786C696E6B2220783D
-      223070782220793D22307078222076696577426F783D22302030203332203332
-      22207374796C653D22656E61626C652D6261636B67726F756E643A6E65772030
-      20302033322033323B2220786D6C3A73706163653D227072657365727665223E
-      262331333B262331303B093C7374796C6520747970653D22746578742F637373
-      2220786D6C3A73706163653D227072657365727665223E2E477265656E7B6669
-      6C6C3A233033394332333B7D262331333B262331303B2623393B2E59656C6C6F
-      777B66696C6C3A234646423131353B7D3C2F7374796C653E0D0A093C70617468
-      20636C6173733D2259656C6C6F772220643D224D342C3130563663302D322E32
-      2C342E352D342C31302D347331302C312E382C31302C34763463302C322E322D
-      342E352C342D31302C3453342C31322E322C342C31307A204D31342C32306332
-      2E332C302C342E332D302E332C362D302E385631366834762D3420202623393B
-      63302C322E322D342E352C342D31302C3453342C31342E322C342C3132763443
-      342C31382E322C382E352C32302C31342C32307A204D31362C32312E39433135
-      2E342C32322C31342E372C32322C31342C3232632D352E352C302D31302D312E
-      382D31302D34763463302C322E322C342E352C342C31302C3420202623393B63
-      302E372C302C312E342C302C322D302E315632312E397A222F3E0D0A093C706F
-      6C79676F6E20636C6173733D22477265656E2220706F696E74733D2233302C32
-      322032362C32322032362C31382032322C31382032322C32322031382C323220
-      31382C32362032322C32362032322C33302032362C33302032362C3236203330
-      2C323620222F3E0D0A3C2F7376673E0D0A}
-    TabOrder = 2
   end
   object OpenDialogAccessDB: TOpenDialog
     Left = 516

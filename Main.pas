@@ -55,7 +55,7 @@ end;
 procedure TMainForm.ActionDataMigrationExecute(Sender: TObject);
 begin
   with TDatamigrationForm.Create(Application) do begin
-    Show;
+    initForm;
   end;
 end;
 

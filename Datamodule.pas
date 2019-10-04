@@ -5,7 +5,8 @@ interface
 uses System.SysUtils, System.Classes, FireDAC.Stan.Intf, FireDAC.Stan.Option, FireDAC.Stan.Error, FireDAC.UI.Intf,
   FireDAC.Phys.Intf, FireDAC.Stan.Def, FireDAC.Stan.Pool, FireDAC.Stan.Async, FireDAC.Phys, FireDAC.VCLUI.Wait, Data.DB,
   FireDAC.Comp.Client, FireDAC.Phys.MySQLDef, FireDAC.Phys.MSAccDef, FireDAC.Phys.ODBCBase, FireDAC.Phys.MSAcc,
-  FireDAC.Phys.MySQL, FireDAC.Stan.ExprFuncs, FireDAC.Phys.SQLiteDef, FireDAC.Phys.SQLite;
+  FireDAC.Phys.MySQL, FireDAC.Stan.ExprFuncs, FireDAC.Phys.SQLiteDef, FireDAC.Phys.SQLite, FireDAC.Stan.Param,
+  FireDAC.DatS, FireDAC.DApt.Intf, FireDAC.DApt, FireDAC.Comp.DataSet;
 
 type
   TDModule = class(TDataModule)
@@ -15,6 +16,9 @@ type
     FDPhysMSAccessDriverLink1: TFDPhysMSAccessDriverLink;
     FDConnectionLocal: TFDConnection;
     FDPhysSQLiteDriverLink1: TFDPhysSQLiteDriverLink;
+    FDTableAccess: TFDTable;
+    FDTableMySQL: TFDTable;
+    FDTableRest: TFDTable;
     procedure DataModuleCreate(Sender: TObject);
   private
     { Private declarations }

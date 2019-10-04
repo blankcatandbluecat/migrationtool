@@ -37,4 +37,25 @@ object DModule: TDModule
     Left = 104
     Top = 152
   end
+  object FDTableAccess: TFDTable
+    Connection = FDConnectionLocal
+    UpdateOptions.UpdateTableName = 'access_connections'
+    TableName = 'access_connections'
+    Left = 104
+    Top = 216
+  end
+  object FDTableMySQL: TFDTable
+    Connection = FDConnectionLocal
+    UpdateOptions.UpdateTableName = 'mysql_connections'
+    TableName = 'mysql_connections'
+    Left = 104
+    Top = 264
+  end
+  object FDTableRest: TFDTable
+    Connection = FDConnectionLocal
+    UpdateOptions.UpdateTableName = 'rest_connections'
+    TableName = 'rest_connections'
+    Left = 104
+    Top = 312
+  end
 end
