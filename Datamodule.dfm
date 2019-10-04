@@ -22,4 +22,12 @@ object DModule: TDModule
     Left = 504
     Top = 272
   end
+  object FDConnectionLocal: TFDConnection
+    Left = 104
+    Top = 96
+  end
+  object FDPhysSQLiteDriverLink1: TFDPhysSQLiteDriverLink
+    Left = 104
+    Top = 152
+  end
 end

@@ -6,7 +6,7 @@ uses
   System.SysUtils, System.Classes, FireDAC.Stan.Intf, FireDAC.Stan.Option, FireDAC.Stan.Error, FireDAC.UI.Intf,
   FireDAC.Phys.Intf, FireDAC.Stan.Def, FireDAC.Stan.Pool, FireDAC.Stan.Async, FireDAC.Phys, FireDAC.VCLUI.Wait, Data.DB,
   FireDAC.Comp.Client, FireDAC.Phys.MySQLDef, FireDAC.Phys.MSAccDef, FireDAC.Phys.ODBCBase, FireDAC.Phys.MSAcc,
-  FireDAC.Phys.MySQL;
+  FireDAC.Phys.MySQL, FireDAC.Stan.ExprFuncs, FireDAC.Phys.SQLiteDef, FireDAC.Phys.SQLite;
 
 type
   TDModule = class(TDataModule)
@@ -14,6 +14,8 @@ type
     FDConnectionMySQL: TFDConnection;
     FDPhysMySQLDriverLink1: TFDPhysMySQLDriverLink;
     FDPhysMSAccessDriverLink1: TFDPhysMSAccessDriverLink;
+    FDConnectionLocal: TFDConnection;
+    FDPhysSQLiteDriverLink1: TFDPhysSQLiteDriverLink;
   private
     { Private declarations }
   public

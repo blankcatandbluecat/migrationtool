@@ -4,7 +4,8 @@ interface
 
 uses Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics, Vcl.Controls,
   Vcl.Forms, Vcl.Dialogs, Vcl.ComCtrls, Vcl.ExtCtrls, Vcl.StdCtrls, cxGraphics, cxControls, cxLookAndFeels,
-  cxLookAndFeelPainters, dxSkinsCore, dxSkinsDefaultPainters, dxRibbonBackstageView;
+  cxLookAndFeelPainters, dxSkinsCore, dxSkinsDefaultPainters, dxRibbonBackstageView, cxContainer, cxEdit, cxTextEdit,
+  Vcl.Menus, cxButtons;
 
 type
   TFormConfiguration = class(TForm)
@@ -15,7 +16,6 @@ type
     EditUsername: TEdit;
     EditPassword: TEdit;
     EditDatabase: TEdit;
-    Button1: TButton;
     Panel1: TPanel;
     Label1: TLabel;
     Label2: TLabel;
@@ -27,8 +27,11 @@ type
     ButtonChooseAccessFile: TButton;
     EditAccessFile: TEdit;
     LabelAccessChooseDBStatus: TLabel;
-    procedure Button1Click(Sender: TObject);
+    cxTextEdit1: TcxTextEdit;
+    cxButton1: TcxButton;
     procedure ButtonChooseAccessFileClick(Sender: TObject);
+    procedure FormClose(Sender: TObject; var Action: TCloseAction);
+    procedure cxButton1Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -42,30 +45,6 @@ implementation
 {$R *.dfm}
 
 uses Datamodule, Main;
-
-procedure TFormConfiguration.Button1Click(Sender: TObject);
-var host, username, password, database: string;
-begin
-  host := EditHost.Text;
-  username := EditUsername.Text;
-  password := EditPassword.Text;
-  database := EditDatabase.Text;
-  DModule.FDConnectionMySQL.Params.BeginUpdate;
-  DModule.FDConnectionMySQL.Params.Add('Server=' + host);
-  DModule.FDConnectionMySQL.Params.username := username;
-  DModule.FDConnectionMySQL.Params.password := password;
-  DModule.FDConnectionMySQL.Params.database := database;
-  DModule.FDConnectionMySQL.Params.DriverID := 'MySQL';
-  DModule.FDConnectionMySQL.Params.EndUpdate;
-  DModule.FDConnectionMySQL.Connected := true;
-  if DModule.FDConnectionMySQL.Connected = true then begin
-    LabelStatus.Caption := 'Connected';
-    LabelStatus.Color := clGreen;
-  end else begin
-    LabelStatus.Caption := 'Not Connected';
-    LabelStatus.Color := clRed;
-  end;
-end;
 
 procedure TFormConfiguration.ButtonChooseAccessFileClick(Sender: TObject);
 var username, password, database: string;
@@ -90,6 +69,35 @@ begin
       LabelAccessChooseDBStatus.Color := clRed;
     end;
   end;
+end;
+
+procedure TFormConfiguration.cxButton1Click(Sender: TObject);
+var host, username, password, database: string;
+begin
+  host := EditHost.Text;
+  username := EditUsername.Text;
+  password := EditPassword.Text;
+  database := EditDatabase.Text;
+  DModule.FDConnectionMySQL.Params.BeginUpdate;
+  DModule.FDConnectionMySQL.Params.Add('Server=' + host);
+  DModule.FDConnectionMySQL.Params.username := username;
+  DModule.FDConnectionMySQL.Params.password := password;
+  DModule.FDConnectionMySQL.Params.database := database;
+  DModule.FDConnectionMySQL.Params.DriverID := 'MySQL';
+  DModule.FDConnectionMySQL.Params.EndUpdate;
+  DModule.FDConnectionMySQL.Connected := true;
+  if DModule.FDConnectionMySQL.Connected = true then begin
+    LabelStatus.Caption := 'Connected';
+    LabelStatus.Color := clGreen;
+  end else begin
+    LabelStatus.Caption := 'Not Connected';
+    LabelStatus.Color := clRed;
+  end;
+end;
+
+procedure TFormConfiguration.FormClose(Sender: TObject; var Action: TCloseAction);
+begin
+  Action := TCloseAction.caFree;
 end;
 
 end.

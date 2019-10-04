@@ -25,10 +25,12 @@ type
     FDMetaInfoQueryFields: TFDMetaInfoQuery;
     DataSourceFields: TDataSource;
     procedure cxButton1Click(Sender: TObject);
+    procedure FormClose(Sender: TObject; var Action: TCloseAction);
   private
     { Private declarations }
   public
     { Public declarations }
+    procedure initForm;
   end;
 
 var FormStructureMigration: TFormStructureMigration;
@@ -49,6 +51,16 @@ begin
     FDMetaInfoQueryFields.Connection := DModule.FDConnectionMySQL;
   end;
   FDMetaInfoQuery.Active := true;
+end;
+
+procedure TFormStructureMigration.FormClose(Sender: TObject; var Action: TCloseAction);
+begin
+  Action := TCloseAction.caFree;
+end;
+
+procedure TFormStructureMigration.initForm;
+begin
+  self.Show;
 end;
 
 end.

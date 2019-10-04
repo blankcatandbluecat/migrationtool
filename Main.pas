@@ -62,7 +62,7 @@ end;
 procedure TMainForm.ActionStructureMigrationExecute(Sender: TObject);
 begin
   with TFormStructureMigration.Create(Application) do begin
-    Show;
+    initForm;
   end;
 end;
 
